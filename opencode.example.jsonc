@@ -1,0 +1,59 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  // Replace these example IDs with models available to your providers.
+  "model": "openai/gpt-6-astra",
+  "small_model": "zai-coding-plan/glm-5.3-flash",
+  "default_agent": "orchestrator",
+  "disabled_providers": ["opencode-go"],
+
+  // The local declaration makes the example model visible to OpenCode
+  // versions whose published registry has not listed this model yet.
+  "provider": {
+    "openai": {
+      "models": {
+        "gpt-6-astra": {
+          "name": "GPT-6 Astra",
+          "reasoning": true,
+          "tool_call": true,
+          "status": "active",
+          "limit": {
+            "context": 1050000,
+            "input": 922000,
+            "output": 128000
+          },
+          "modalities": {
+            "input": ["text", "image"],
+            "output": ["text"]
+          }
+        }
+      }
+    }
+  },
+
+  // Project-local plugins under .opencode/plugins are auto-discovered.
+
+  "agent": {
+    "general": {
+      "model": "zai-coding-plan/glm-5.3-flash",
+      "steps": 40
+    },
+    "explore": {
+      "model": "zai-coding-plan/glm-5.3-flash",
+      "steps": 25
+    }
+  },
+
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "tail_turns": 15,
+    "preserve_recent_tokens": 15000,
+    "reserved": 20000
+  },
+
+  "experimental": {
+    "batch_tool": true,
+    "continue_loop_on_deny": true
+  }
+}

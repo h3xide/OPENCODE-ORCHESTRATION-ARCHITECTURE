@@ -1,0 +1,23 @@
+name: Validate public reference repository
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan public contents
+        shell: pwsh
+        run: ./scripts/validate-public.ps1
+      - name: Check plugin syntax
+        shell: pwsh
+        run: node --check .opencode/plugins/picker-glm-architecture.js
+      - name: Check reference structure
+        shell: pwsh
+        run: node scripts/validate-structure.mjs
