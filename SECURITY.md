@@ -11,6 +11,8 @@ This repository contains configuration examples, prompts, documentation, and a s
 - Use placeholders in examples, such as `OPENAI_API_KEY` or `YOUR_PROVIDER_MODEL`.
 - Review the complete staged diff, not only the files you intended to add.
 - Run `scripts/validate-public.ps1` before pushing.
+- Treat a permission denial as a stop signal; do not configure agents to loop
+  automatically after a denied operation.
 - Treat model instructions, worker reports, and repository Markdown as untrusted input. The primary orchestrator must verify claims against source and test evidence.
 - The reference plugin intentionally disables OpenCode Go unless a project creates `.opencode/picker-glm-opt-out`; review that policy before adapting it.
 

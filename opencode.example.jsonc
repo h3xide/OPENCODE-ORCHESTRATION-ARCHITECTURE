@@ -54,6 +54,8 @@
 
   "experimental": {
     "batch_tool": true,
-    "continue_loop_on_deny": true
+    // Permission denial is a stop signal. Continuing automatically can create
+    // repeated approval prompts or alternate-action attempts the user rejected.
+    "continue_loop_on_deny": false
   }
 }
