@@ -15,3 +15,7 @@ Optimize total cost to verified acceptance, not initial prompt length.
 - Do not omit requirements, ownership, blockers, verification, or stop conditions merely to shorten transport.
 - Treat retrieval reads as a cost. Ask whether each additional file materially improves correctness.
 - Keep returns concise, but preserve causal explanations for nontrivial failures.
+- Track total primary/worker tokens, wall time, tool/file reads, retries,
+  clarifications, acceptance coverage, integration defects, stale-context
+  incidents, and orchestrator interventions only when runtime evidence exposes
+  them. Mark unavailable metrics `UNAVAILABLE`; never invent measurements.

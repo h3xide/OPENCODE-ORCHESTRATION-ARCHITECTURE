@@ -50,7 +50,7 @@ The orchestrator is model-neutral. The example configuration defaults to Astra, 
 | Tier | Use when | Transport | Durable files |
 | --- | --- | --- | --- |
 | 1. Normal | One bounded task with obvious scope | Concise natural language | None required |
-| 2. Substantial | Shared criteria, handoffs, dependencies, or resumption | One task manifest | `docs/agent/tasks/` |
+| 2. Substantial | Shared criteria, dependencies, nontrivial ownership, or resumption | One task manifest | `docs/agent/tasks/` |
 | 3. Repeated workflow | A detailed procedure is stable and reused | Manifest plus one spec | `docs/agent/specs/` |
 
 Optional domain files belong in `docs/agent/domains/` only after repeated subsystem work proves they are useful.
@@ -121,8 +121,9 @@ runtime observation
 Used for requirements and acceptance:
 
 ```text
-applicable system/security constraints
-> latest explicit user requirement
+system, safety, legal, and platform constraints
+> explicit authoritative contracts
+> latest clear in-scope user requirement
 > accepted product or architecture decision
 > authoritative specification
 > acceptance criteria
@@ -142,6 +143,7 @@ Conflicts are reported and clarified. Existing buggy behavior is never promoted 
 - Material discovery persistence: only future-useful information is promoted to task, domain, decision, state, or queue files.
 - Targeted verification: workers run the smallest meaningful checks; integration verification is centralized.
 - Bounded execution: specialist step budgets remain resource guardrails. A worker may be continued only when new evidence or measurable progress justifies it.
+- Continuation semantics: cap exhaustion returns `LIMIT_REACHED`; it never turns unfinished work into success or ends the overall task automatically.
 - Stall protection: repeated unchanged failures trigger a clear blocked result rather than silent looping.
 - Public-safe configuration: this repository contains no credentials, logs, personal paths, OAuth state, or private project context.
 
@@ -182,6 +184,9 @@ The design is not considered successful because assignments are shorter. Measure
 - integration defects;
 - stale-context incidents;
 - orchestrator interventions.
+
+Metrics unavailable from runtime/session evidence are reported as `UNAVAILABLE`,
+not estimated as measured values.
 
 See `docs/architecture/measurement.md` for the A/B plan.
 

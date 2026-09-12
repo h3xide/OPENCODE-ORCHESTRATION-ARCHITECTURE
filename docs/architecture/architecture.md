@@ -32,7 +32,10 @@ Use concise English. Include role, task, read paths, ownership, acceptance, and 
 
 ### Substantial task
 
-Use one task manifest when shared acceptance, dependencies, cross-session continuity, nontrivial ownership, or product constraints create coordination value. The manifest is a working set, not a project encyclopedia.
+Use one task manifest when shared acceptance, dependencies, cross-session
+continuity, nontrivial ownership, or repeated context creates real coordination
+value. Two workers, one blocker, task length, or several steps alone do not
+justify it. The manifest is a working set, not a project encyclopedia.
 
 ### Repeated workflow
 
@@ -42,14 +45,26 @@ Use one reusable spec when the procedure is stable, detailed, and likely to recu
 
 - Start with no more than four independent workstreams. Expand only when ownership and integration remain clear.
 - Prefer one writer for shared files and contracts.
-- Workers stop for unchanged failures, ownership conflicts, or external blockers instead of looping.
+- Repeated operations are legitimate after source, inputs, environment,
+  hypothesis, or evidence changes. A stall requires unchanged relevant state
+  and materially identical failure without new evidence.
 - A bounded worker may be continued only when new evidence, a changed hypothesis, or measurable progress justifies it.
 - The primary orchestrator does not accept a worker result solely because the worker used many steps.
+- A capped unfinished worker returns `LIMIT_REACHED` with completed work,
+  verification, remaining work, files/evidence, blockers, and a continuation
+  proposal. The overall task remains active until verified DONE, genuine
+  BLOCKED, or user interruption.
 - Worker returns should state changed files, verification, acceptance status, blockers, and causal explanations for nontrivial failures.
 
 ## Source and Requirement Truth
 
-Use current-state evidence to understand what exists. Use intended-behavior authority to decide what should exist. Applicable system and security constraints outrank ordinary task requests. Conflicts are surfaced for clarification; they are not silently resolved by treating a bug as a requirement.
+Use current-state evidence to understand what exists. Use intended-behavior
+authority to decide what should exist. System, safety, legal, platform, and
+explicit contract constraints outrank ordinary task preferences. Then apply the
+latest clear in-scope user requirement, accepted decisions, authoritative specs,
+acceptance criteria, tests, and current code in that order. Recency alone does
+not invalidate an authoritative constraint. Conflicts are surfaced rather than
+silently resolved by treating a bug as a requirement.
 
 ## What This Architecture Does Not Do
 

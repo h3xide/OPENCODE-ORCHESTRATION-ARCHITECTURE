@@ -17,4 +17,6 @@ Report acceptance criteria, observed behavior, blocked/unknown states, evidence 
 
 ## Generic Browser Checks
 
-Apply the repository's `visual-browser-qa` skill for DOM/accessibility, focus, keyboard, back, Escape, reduced motion, console, network, and screenshot discipline. Do not duplicate those checks in every task assignment.
+Apply: `visual-browser-qa` skill.
+
+Do not duplicate its generic browser mechanics in this procedure or task assignments.

@@ -12,7 +12,9 @@ This repository is a portable reference architecture for OpenCode. Keep changes 
 ## Context
 
 - Normal tasks use concise English and direct repository paths.
-- Use one task manifest only when shared context, dependencies, ownership, or continuity justify it.
+- Use one task manifest only when shared criteria, dependencies, nontrivial
+  ownership, or cross-session continuity create real coordination value. Two
+  workers, one blocker, or several steps alone do not justify it.
 - Use one reusable spec only for a stable repeated procedure.
 - Do not create universal indexes, aliases, registries, or opaque protocol fields without measured value.
 - Preserve material discoveries in the smallest authoritative durable file; let temporary details die with the child session.
@@ -28,11 +30,18 @@ This repository is a portable reference architecture for OpenCode. Keep changes 
 ## Verification
 
 - Current-state claims require source, runtime, test, or direct evidence.
-- Intended behavior comes from applicable constraints, explicit requirements, accepted decisions, specifications, and acceptance criteria.
+- Intended behavior follows system/safety/legal/platform constraints, explicit
+  contracts, the latest clear in-scope user requirement, accepted decisions,
+  specifications, acceptance criteria, tests, then current code. Surface
+  unresolved authoritative conflicts instead of silently choosing.
 - Worker reports are claims. Inspect actual diffs and evidence.
 - Writers run focused checks. The primary orchestrator performs broad integration checks after the worker wave.
 - Do not repeat unchanged passing checks.
-- A step cap is not task success. Continue a bounded worker only for concrete progress; otherwise return BLOCKED with evidence.
+- A step cap is not task success. Unfinished workers return `LIMIT_REACHED` with
+  all applicable fields from completed work, checks, remaining work, evidence,
+  blockers, and a continuation
+  proposal. Continue only for concrete progress; overall work remains active
+  until verified DONE, genuine BLOCKED, or user interruption.
 
 ## Public Safety
 

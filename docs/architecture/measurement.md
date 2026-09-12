@@ -28,6 +28,23 @@ stale-context incidents
 orchestrator interventions
 ```
 
+## Sources
+
+| Metric | Preferred source |
+| --- | --- |
+| Primary and worker tokens | OpenCode/provider/session usage logs |
+| Wall-clock duration | Session/task timestamps |
+| Tool calls and file reads | Runtime tool logs when exposed |
+| Retries | Repeated failed attempts in logs/results |
+| Clarifications | Explicit clarification events |
+| Acceptance coverage | Tester/reviewer output against shared criteria |
+| Integration defects | Failures discovered after integration |
+| Stale-context incidents | Manually classified contradictions |
+| Orchestrator interventions | Explicit correction, continuation, or reassignment events |
+
+If a metric is not exposed by runtime evidence, record `UNAVAILABLE`. Do not
+infer an exact value and present it as measured.
+
 ## Counting Rules
 
 - Count one task from initial assignment through accepted result.

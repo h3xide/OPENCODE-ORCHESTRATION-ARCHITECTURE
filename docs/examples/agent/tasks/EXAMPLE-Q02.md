@@ -55,3 +55,9 @@ Apply the generic `visual-browser-qa` skill and the procedure in `../specs/post-
 
 Last verified: example only
 Verified against: current working tree before the QA run
+
+## Continuation
+
+If the worker reaches its invocation limit, return `LIMIT_REACHED` with completed
+acceptance criteria, evidence paths, remaining states/checks, blockers, and a
+continuation recommendation. Do not report the task as complete.
