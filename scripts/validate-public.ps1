@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 
 $root = Resolve-Path (Join-Path $PSScriptRoot "..")
 $excluded = @(".git", "node_modules", "coverage", "dist", "build")
-$files = Get-ChildItem -LiteralPath $root -File -Recurse | Where-Object {
+$files = Get-ChildItem -LiteralPath $root -File -Recurse -Force | Where-Object {
   $relative = $_.FullName.Substring($root.Path.Length + 1)
   $parts = $relative -split "[\\/]"
   ($parts | Where-Object { $excluded -contains $_ }).Count -eq 0 -and
@@ -56,3 +56,4 @@ if (Get-Command git -ErrorAction SilentlyContinue) {
 }
 
 Write-Output "Public repository scan passed: $($files.Count) files inspected."
+exit 0
