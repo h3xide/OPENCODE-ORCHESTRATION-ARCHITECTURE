@@ -1,6 +1,8 @@
 # Local OpenCode state and credentials
 .opencode/state/
 .opencode/*.local.*
+.opencode/auth.json
+.opencode/storage/
 .env
 .env.*
 !.env.example
@@ -12,6 +14,12 @@ coverage/
 dist/
 build/
 node_modules/
+*.db
+*.sqlite
+*.sqlite3
+*.pem
+*.key
+screenshots/
 
 # OS and editor files
 .DS_Store
